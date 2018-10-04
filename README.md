@@ -1,2 +1,2 @@
-# java-springboot-swagger-starter
-Simple Java Spring Boot App with Integrated Swagger.
+# java-springboot-app
+Java Spring Boot App with Integrated Swagger.
