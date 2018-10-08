@@ -31,20 +31,20 @@ public class UserService{
 	return resultList;
 		
 	}
-	public User getUser(String name) throws UserNotFoundException {
+	public User getUser(Long id) throws UserNotFoundException {
 		LOGGER.info("Inside Service::"+ CLASSNAME + " Method:: getUser()" );
 		
-		return userDao.findById(name).get();
+		return userDao.findById(id).get();
 	}
 	public void addUser(User b)  throws UserNotFoundException {
 		//userList.add(b);
 		System.out.println(b.toString());
 		userDao.save(b);
 	}
-	public void deleteUser(String uname)  throws UserNotFoundException {
+	public void deleteUser(Long uid)  throws UserNotFoundException {
 		//userList.add(b);
 		//System.out.println(b.toString());
-		userDao.deleteById(uname);
+		userDao.deleteById(uid);
 	}
 	
 }
