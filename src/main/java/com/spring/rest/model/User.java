@@ -1,9 +1,14 @@
 package com.spring.rest.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+
+@Entity
+@Table(name="User")
 public class User {
+	@Id
 	private String userName;
 	private String password;
 	
@@ -25,6 +30,10 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + "]";
 	}
 	
 	
