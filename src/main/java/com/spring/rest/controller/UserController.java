@@ -25,18 +25,18 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/Users", method = RequestMethod.GET)
+	@RequestMapping(value="/User", method = RequestMethod.GET)
 	public List<User> getAllUsers() {
 		LOGGER.info("Inside Controller::"+ CLASSNAME + " Method:: getAllUsers()" );
 		return userService.getAllUsers();
 	}
 	
-	@RequestMapping(value="/User/{uname}", method = RequestMethod.GET)
-	public User getUser(@PathVariable String uname) throws UserNotFoundException {
+	@RequestMapping(value="/User/{uid}", method = RequestMethod.GET)
+	public User getUser(@PathVariable Long uid) throws UserNotFoundException {
 		LOGGER.info("Inside Controller::"+ CLASSNAME + " Method:: getUser()" );
 		User user = new User();
 		try {
-			user=userService.getUser(uname);
+			user=userService.getUser(uid);
 		}catch(UserNotFoundException bex) {
 			
 		}
@@ -47,6 +47,12 @@ public class UserController {
 		try {userService.addUser(b);}catch(UserNotFoundException bex) {};
 		
 		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+	@RequestMapping(value="/User/{uid}", method = RequestMethod.DELETE)
+	public ResponseEntity <String> deleteBook(@PathVariable Long uid) {
+		try {userService.deleteUser(uid);}catch(UserNotFoundException bex) {};
+		
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
 }
